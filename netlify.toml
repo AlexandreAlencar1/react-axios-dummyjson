@@ -1,0 +1,7 @@
+# netlify.toml
+
+[build]
+  publish = "react-axios-dummyjson"  # Especifica a pasta a ser implantada (frontend)
+
+[build.ignore]
+  - "spring/**"  # Exclui a pasta spring
