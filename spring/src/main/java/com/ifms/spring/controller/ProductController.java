@@ -22,6 +22,18 @@ public class ProductController {
                 String.format("https://dummyjson.com/products/%s", product),
                 Product.class);
         return resp.getBody();
-
     }
+//-------------------------------------------------------------------------------------
+    @GetMapping("/get-external-data/{product}")
+    public ResponseEntity<Product> getExternalProductData(@PathVariable("product") String product) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Product> resp = restTemplate.getForEntity(
+                String.format("https://dummyjson.com/products/%s", product),
+                Product.class);
+
+        Product productData = resp.getBody();
+
+        return ResponseEntity.ok(productData);
+    }
+
 }
