@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class ProductJson {
+public class ProductJsonModel {
     @Id
     private Long id;
     private String title;
