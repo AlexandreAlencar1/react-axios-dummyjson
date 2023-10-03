@@ -6,10 +6,10 @@ import ProductDetails from './components/ProductDetails';
 function App() {
   return (
     <Router>
-      <Routes> {/* Use Routes em vez de div */}
+      <Routes> {}
         <Route path="/" element={<ProductList />} />
         <Route path="/product/:id" element={<ProductDetails />} />
-      </Routes> {/* Feche o Routes */}
+      </Routes> {}
     </Router>
   );
 }

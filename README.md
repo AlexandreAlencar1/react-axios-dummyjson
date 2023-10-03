@@ -2,7 +2,8 @@
 
 2: abra o arquivo SpringbootApplication.java e clique em run
 
-3: No Postman, dê um get em http://localhost:8080/productsjson/save
-4: no terminal: cd react-axios-dummyjson/
+4: no terminal: cd frontend/
 
-5: npm run dev
+5: npm start
+
+6: clique em detalhes

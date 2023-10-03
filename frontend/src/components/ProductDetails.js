@@ -23,12 +23,24 @@ function ProductDetail() {
 
   return (
     <div>
+      <h3>Imagens do Produto</h3>
+      <div className="product-images">
+        {product.images.map((image, index) => (
+          <img key={index} src={image} alt={`Imagem ${index + 1}`} />
+        ))}
+      </div>
+      
       <h1>Detalhes do Produto</h1>
       <h2>{product.title}</h2>
       <p>{product.description}</p>
       <p>Preço: R$ {product.price}</p>
-      {/* Adicione mais detalhes conforme necessário */}
+      <p>Classificação: {product.rating}</p>
+      <p>Estoque: {product.stock} unidades</p>
+
+
     </div>
+
+
   );
 }
 

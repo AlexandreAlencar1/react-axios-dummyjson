@@ -21,11 +21,14 @@ public class ProductJsonController {
     @Autowired
     public ProductJsonController(ProductJsonService productJsonService) {
         this.productJsonService = productJsonService;
+
+        // Ao criar uma instância do controlador, chame o método para salvar a lista de
+        // produtos, tirei o post na url save para rodar automaticametne
+        this.productJsonService.saveProductListFromExternalAPI();
     }
 
     @PostMapping("save")
     public ResponseEntity<String> saveProductList() {
-        productJsonService.saveProductListFromExternalAPI();
         return ResponseEntity.ok("Product list saved successfully!");
     }
 
