@@ -32,15 +32,19 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping // Salvar usuário
-    public ResponseEntity<UserModel> saveUser(@RequestBody @Valid UserRecordDto userRecordDto) {
-        if (userRecordDto.getName() == null || userRecordDto.getEmail() == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+    @PostMapping // Salvar usuário // public ResponseEntity<?> significa que ele pode retornar qualquer tipo de objeto ou nenhuma informação pq tava dando conflito 
+    public ResponseEntity<?> saveUser(@RequestBody @Valid UserRecordDto userRecordDto) {
+        if (userRecordDto.getName() == null || userRecordDto.getEmail() == null || userRecordDto.getPassword() == null) {
+            return ResponseEntity.badRequest().body("Campos obrigatórios não preenchidos");
         }
-
+        if (userService.isEmailAlreadyRegistered(userRecordDto.getEmail())) {
+            return ResponseEntity.badRequest().body("O email já está cadastrado");
+        }
+    
         UserModel userModel = userService.saveUser(userRecordDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(userModel);
     }
+    
 
     @GetMapping // Consultar todos os usuários
     public ResponseEntity<List<UserModel>> getAllUsers() {

@@ -24,5 +24,5 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
     private String name;
     @Column(unique = true) // Garante que os e-mails sejam únicos
     private String email;
-    private String senha;
+    private String password;
 }

@@ -48,4 +48,9 @@ public class UserService {
     public void deleteUser(Long idUser) { // Atualizado para idUser
         userRepository.deleteById(idUser);
     }
+    
+    public boolean isEmailAlreadyRegistered(String email) {
+        // Implemente a verificação no repositório ou no próprio serviço
+        return userRepository.findByEmail(email) != null;
+    }
 }

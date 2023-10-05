@@ -1,14 +1,14 @@
-import axios from 'axios'; // Importe a biblioteca Axios
-import React, { useState, useEffect } from 'react';
+import axios from "axios"; // Importe a biblioteca Axios
+import React, { useState } from "react";
 
 function UserForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    senha: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
-  const [userId, setUserId] = useState(null); // Estado para armazenar o ID do usuário criado
+  const [setUserId] = useState(null); // Estado para armazenar o ID do usuário criado
   const [userDetails, setUserDetails] = useState(null); // Estado para armazenar os detalhes do usuário
 
   const handleChange = (e) => {
@@ -21,19 +21,27 @@ function UserForm() {
 
     // Enviar os dados do formulário para o servidor usando Axios
     axios
-      .post('http://localhost:8080/users', formData)
+      .post("http://localhost:8080/users", formData)
       .then((response) => {
         // Obtenha o ID do usuário retornado pela criação
-        const { id } = response.data;
-        setUserId(id);
-        // Após a criação, busque os detalhes do usuário automaticamente
-        return axios.get(`http://localhost:8080/users/1`);
-      })
-      .then((userResponse) => {
-        setUserDetails(userResponse.data);
+        const { userId } = response.data;
+        setUserId(userId);
+
+        // Adicione um timeout de 500ms antes de fazer a chamada GET
+        setTimeout(() => {
+          // Após a pausa, busque os detalhes do usuário automaticamente
+          axios
+            .get(`http://localhost:8080/users/${userId}`)
+            .then((userResponse) => {
+              setUserDetails(userResponse.data);
+            })
+            .catch((error) => {
+              console.error("Erro ao buscar detalhes do usuário:", error);
+            });
+        }, 500); // Tempo em milissegundos (500ms)
       })
       .catch((error) => {
-        console.error('Erro ao criar usuário:', error);
+        console.error("Erro ao criar usuário:", error);
       });
   };
 
@@ -63,8 +71,8 @@ function UserForm() {
           <label>Senha:</label>
           <input
             type="password"
-            name="senha"
-            value={formData.senha}
+            name="password"
+            value={formData.password}
             onChange={handleChange}
           />
         </div>
@@ -73,7 +81,7 @@ function UserForm() {
 
       {userDetails && (
         <div>
-          <h2>Detalhes do Usuário</h2>
+          <h2>Cadastro efetuado com sucesso!</h2>
           <p>Nome: {userDetails.name}</p>
           <p>E-mail: {userDetails.email}</p>
         </div>
