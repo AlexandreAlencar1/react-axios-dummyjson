@@ -48,7 +48,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userList);
     }
 
-    @GetMapping("/{id}") // Consultar por ID
+    @GetMapping("/{idUser}") // Consultar por ID
     public ResponseEntity<Object> getUserById(@PathVariable Long idUser) {
         Optional<UserModel> userOptional = userService.getUserById(idUser);
         if (userOptional.isPresent()) {

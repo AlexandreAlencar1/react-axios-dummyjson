@@ -31,12 +31,12 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<UserModel> getUserById(Long id) {
-        return userRepository.findById(id);
+    public Optional<UserModel> getUserById(Long idUser) { // Atualizado para idUser
+        return userRepository.findById(idUser);
     }
 
-    public UserModel updateUser(Long id, UserRecordDto userRecordDto) {
-        Optional<UserModel> optionalUser = userRepository.findById(id);
+    public UserModel updateUser(Long idUser, UserRecordDto userRecordDto) { // Atualizado para idUser
+        Optional<UserModel> optionalUser = userRepository.findById(idUser);
         if (optionalUser.isPresent()) {
             UserModel userModel = optionalUser.get();
             BeanUtils.copyProperties(userRecordDto, userModel);
@@ -45,7 +45,7 @@ public class UserService {
         return null;
     }
 
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+    public void deleteUser(Long idUser) { // Atualizado para idUser
+        userRepository.deleteById(idUser);
     }
 }
