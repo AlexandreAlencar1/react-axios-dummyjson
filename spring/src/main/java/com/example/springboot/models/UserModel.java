@@ -18,7 +18,7 @@ import lombok.Data;
 public class UserModel extends RepresentationModel<UserModel> implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
+    @Id//id dessa classe no bd
     @GeneratedValue(strategy = GenerationType.IDENTITY) // id gerado automaticamente
     private Long idUser;
     private String name;

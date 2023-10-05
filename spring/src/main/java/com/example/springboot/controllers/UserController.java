@@ -37,12 +37,10 @@ public class UserController {
         if (userRecordDto.getName() == null || userRecordDto.getEmail() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
-        
+
         UserModel userModel = userService.saveUser(userRecordDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(userModel);
     }
-    
-    
 
     @GetMapping // Consultar todos os usuários
     public ResponseEntity<List<UserModel>> getAllUsers() {
@@ -51,8 +49,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}") // Consultar por ID
-    public ResponseEntity<Object> getUserById(@PathVariable Long id) {
-        Optional<UserModel> userOptional = userService.getUserById(id);
+    public ResponseEntity<Object> getUserById(@PathVariable Long idUser) {
+        Optional<UserModel> userOptional = userService.getUserById(idUser);
         if (userOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(userOptional.get());
         } else {
