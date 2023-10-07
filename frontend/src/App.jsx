@@ -1,16 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importe Routes aqui
-import ProductList from './components/ProductList';
-import ProductDetails from './components/ProductDetails';
-import UserPosts from './components/UserPost';
+import React from "react";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom"; // Importe Routes aqui
+
+import Home from "./components/pages/Home";
+import ProductDetails from "./components/products/ProductDetails";
+import ProductList from "./components/products/ProductList";
+import AddUser from "./components/users/AddUser";
+import EditUser from "./components/users/EditUser";
+import ViewUser from "./components/users/ViewUser";
+import Navbar from "./components/layout/Navbar";
 function App() {
   return (
     <Router>
-      <Routes> {}
-        <Route path="/" element={<ProductList />} />
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/adduser" element={<AddUser />} />
+        <Route exact path="/edituser/:idUser" element={<EditUser />} />
+        <Route exact path="/viewuser/:idUser" element={<ViewUser />} />
+        <Route path="/products" element={<ProductList />} />
         <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/user/cadastro" element={<UserPosts />} />
-      </Routes> {}
+      </Routes>
     </Router>
   );
 }

@@ -14,11 +14,12 @@ import com.example.springboot.services.ProductJsonService;
 
 @RestController
 @RequestMapping("productsjson")
+// @CrossOrigin("localhost:3000")
 public class ProductJsonController {
 
     private final ProductJsonService productJsonService;
 
-    @Autowired
+    //@Autowired
     public ProductJsonController(ProductJsonService productJsonService) {
         this.productJsonService = productJsonService;
 

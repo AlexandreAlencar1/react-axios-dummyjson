@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,12 +23,13 @@ import com.example.springboot.services.UserService;
 import jakarta.validation.Valid;
 
 @RestController
+//@CrossOrigin("localhost:3000")
 @RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
 
-    @Autowired
+    //@Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -52,7 +54,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userList);
     }
 
-    @GetMapping("/{idUser}") // Consultar por ID
+    @GetMapping("/user/{idUser}") // Consultar por ID
     public ResponseEntity<Object> getUserById(@PathVariable Long idUser) {
         Optional<UserModel> userOptional = userService.getUserById(idUser);
         if (userOptional.isPresent()) {
@@ -62,9 +64,9 @@ public class UserController {
         }
     }
 
-    @PutMapping("/{id}") // Atualizar por ID
-    public ResponseEntity<Object> updateUser(@PathVariable Long id, @RequestBody @Valid UserRecordDto userRecordDto) {
-        UserModel updatedUser = userService.updateUser(id, userRecordDto);
+    @PutMapping("/user/{idUser}") // Atualizar por ID
+    public ResponseEntity<Object> updateUser(@PathVariable Long idUser, @RequestBody @Valid UserRecordDto userRecordDto) {
+        UserModel updatedUser = userService.updateUser(idUser, userRecordDto);
         if (updatedUser != null) {
             return ResponseEntity.status(HttpStatus.OK).body(updatedUser);
         } else {
@@ -72,9 +74,9 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/{id}") // Deletar por ID
-    public ResponseEntity<Object> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
+    @DeleteMapping("/user/{idUser}") // Deletar por ID
+    public ResponseEntity<Object> deleteUser(@PathVariable Long idUser) {
+        userService.deleteUser(idUser);
         return ResponseEntity.status(HttpStatus.OK).body("User deleted successfully.");
     }
 }

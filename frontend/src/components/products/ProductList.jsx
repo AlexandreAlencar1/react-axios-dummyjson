@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import RegistrationPrompt from './RegistrationPrompt';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -18,9 +17,6 @@ function ProductList() {
 
   return (
     <div>
-      <div>
-        <RegistrationPrompt /> {/* Renderize o novo componente aqui */}
-      </div>
       <h1>Lista de Produtos</h1>
       <ul>
         {products.map((product) => (

@@ -2,7 +2,6 @@ package com.example.springboot.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,7 +14,7 @@ public class ProductJsonService {
 
     private final ProductJsonRepository productJsonRepository;
 
-    @Autowired
+    //@Autowired
     public ProductJsonService(ProductJsonRepository productJsonRepository) {
         this.productJsonRepository = productJsonRepository;
     }

@@ -13,6 +13,6 @@ public class UserRecordDto {
     @Email(message = "O formato do e-mail é inválido")
     @Size(max = 255, message = "O e-mail deve ter no máximo 255 caracteres")
     private String email;
-    @NotBlank(message = "A senha é obrigatória")
+    // @NotBlank(message = "A senha é obrigatória")
     private String password;
 }
