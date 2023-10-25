@@ -10,3 +10,5 @@ export const SearchResultsList = ({ results }) => {
     </div>
   );
 };
+
+export default SearchResultsList;
