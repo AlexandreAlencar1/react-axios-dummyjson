@@ -7,7 +7,7 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: minha_database
-      MYSQL_USER: mysqldummy
-      MYSQL_PASSWORD: sqldummy
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: sql
     ports:
       - "3306:3306"
