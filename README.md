@@ -1,5 +1,7 @@
-
 # Loja XXX
+
+Vídeo no mostrando as funcionalidades: https://youtu.be/8TzJVSygros.
+
 Projeto de uma loja, utilizado para aprimorar conceitos que adquiri na faculdade e em cursos onnline.
 
 Funcionamento:
@@ -11,20 +13,23 @@ No frontend, os clientes têm a opção de se registrar. No entanto, este é ape
 # Backend do Projeto
 
 ## Descrição
+
 Este projeto é uma aplicação backend desenvolvida em Spring Boot 3.1.3, utilizando Lombok, Hibernate e JPA. Ele implementa operações CRUD e API RESTfull, seguindo padrões de desenvolvimento como Clean Code e MVC, além de fazer uso de versionamento com Git.
 
 # Instalação
 
-
 ## Banco de Dados
+
 Você pode escolher entre usar um banco de dados PostgreSQL local (instalado em seu computador) ou MySQL via Docker para este projeto.
 
 ### Docker (Recomendado)
+
 Este projeto está configurado para uso com Docker. Siga os passos abaixo para executá-lo:
 
 1. Navegue até a pasta `spring/`.
 
 2. Execute o seguinte comando para iniciar o contêiner Docker:
+
 ```bash
 docker-compose up
 ```
@@ -45,12 +50,15 @@ Remova o comentário do Postgresql no arquivo application.properties e utilize l
 
 1. No terminal, navegue até a pasta `frontend/`.
 2. Para iniciar o frontend:
- ```bash
+
+```bash
 npm start
 ```
 
 Aproveite o projeto!
+
 # Futuras Implementações:
+
 Estamos planejando estilizar o projeto e adicionar as seguintes funcionalidades:
 
 Opção de adicionar produtos ao carrinho.
